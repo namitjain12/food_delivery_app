@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:food_delivery/screens/hotel_screen.dart';
 import 'package:food_delivery/screens/ticket_view.dart';
+import 'package:food_delivery/utils/app_info_list.dart';
 import 'package:food_delivery/utils/app_styles.dart';
 import 'package:gap/gap.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  
+  const HomeScreen({Key?key,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -76,12 +79,41 @@ class HomeScreen extends StatelessWidget {
                     },
                     child: Text("View all",style: Styles.textStyle.copyWith(color: Styles.primaryColor,))),
                 ],
-              )
+              ),
               ],
             ),
           )
-        ,const Gap(15)
-        ,const TicketView(),
+        ,const Gap(15),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.only(left: 20),
+          child: Row(
+            children: ticketList.map((singleTicket) => TicketView(ticket: singleTicket, isColor: null,)).toList()
+          ),
+        )
+       ,const Gap(15),
+       Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+         child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Hotels",style: Styles.headLineStyle2,),
+                    InkWell(
+                      onTap: () {
+                        print('You are tapped');
+                      },
+                      child: Text("View all",style: Styles.textStyle.copyWith(color: Styles.primaryColor,))),
+                  ],
+                ),
+       )
+        
+        ,const Gap(15),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.only(left: 20),
+          child: Row(
+            children: hotelList.map((singleHotel) => HotelScreen(hotel: singleHotel)).toList(),
+          ))
         ],
       ),
     );
