@@ -7,6 +7,7 @@ import 'package:food_delivery/utils/app_info_list.dart';
 import 'package:food_delivery/utils/app_styles.dart';
 import 'package:food_delivery/widgets/thick_container.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get_utils/get_utils.dart';
 
 import '../utils/app_layout.dart';
 
@@ -20,7 +21,7 @@ class TicketView extends StatelessWidget {
     final size = AppLayout.getSize(context); 
     return SizedBox(
       width: size.width*.85 ,
-      height: AppLayout.getHeight(200),
+      height: AppLayout.getHeight(GetPlatform.isAndroid==true?167:169),
       child: Container(
         margin:  EdgeInsets.only(right: AppLayout.getHeight(16),),
         child: Column(
@@ -142,7 +143,7 @@ class TicketView extends StatelessWidget {
                 
                 decoration: BoxDecoration(
                   color:isColor==null? Colors.grey.shade300 :Colors.white,
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                 topLeft :Radius.circular(10),
                 bottomLeft: Radius.circular(10),
               ))),
@@ -156,8 +157,8 @@ class TicketView extends StatelessWidget {
         ,Container(
           decoration:  BoxDecoration(
               color:  isColor==null? Styles.orangeColor :Colors.white,
-              borderRadius:const  BorderRadius.only(bottomLeft: Radius.circular(21),
-              bottomRight: Radius.circular(21),
+              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(isColor==null?21:0),
+              bottomRight: Radius.circular(isColor==null?21:0),
               ),
               
             ),

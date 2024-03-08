@@ -15,6 +15,7 @@ class TicketScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final size =AppLayout.getSize(context);
     return Scaffold(
+      backgroundColor: Styles.bgcolor,
       body: Stack(
         children:[ ListView(
           padding: EdgeInsets.symmetric(horizontal:AppLayout.getHeight(20), vertical: AppLayout.getHeight(20)),
@@ -27,6 +28,24 @@ class TicketScreen extends StatelessWidget {
              Container(
               padding: EdgeInsets.only(left: AppLayout.getHeight(15)),
               child: TicketView(ticket: ticketList[0], isColor: true,),
+             ),
+             Container(
+              
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: Column(children: [
+                Row(
+                  children: [
+                    Column(
+                      children: [
+                        Text("Flutter DB", style: Styles.headLineStyle3,),
+                        Gap(AppLayout.getHeight(5)),
+                        Text("Passenger", style: Styles.headLineStyle3,),
+
+                      ],
+                    )
+                  ],
+                )
+              ]),
              )
              
           ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:food_delivery/screens/api_view_all.dart';
 import 'package:food_delivery/screens/hotel_screen.dart';
 import 'package:food_delivery/screens/ticket_view.dart';
 import 'package:food_delivery/utils/app_info_list.dart';
@@ -8,12 +9,15 @@ import 'package:food_delivery/utils/app_styles.dart';
 import 'package:gap/gap.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 
+import '../widgets/search_bar.dart';
+
 class HomeScreen extends StatelessWidget {
   
   const HomeScreen({Key?key,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String searchText = '';
     return Scaffold(
       backgroundColor: Styles.bgcolor,
       body: ListView(
@@ -63,8 +67,20 @@ class HomeScreen extends StatelessWidget {
                   child: Row(
                      
                     children: [
-                       Icon(FluentSystemIcons.ic_fluent_search_regular,color: Color(0xFFBFC205),),
-                       Text('Search', style:Styles.headLineStyle4),
+
+              SizedBox(
+                width: 300,
+                child: SearchBoxWidget(
+                searchText: searchText,
+                onChanged: (text) {
+                  searchText = text;
+                  // Handle search logic here
+                },
+            ),
+              ),
+
+                      //  Icon(FluentSystemIcons.ic_fluent_search_regular,color: Color(0xFFBFC205),),
+                      //  Text('Search', style:Styles.headLineStyle4),
                     ],
                   ),
                 ),
@@ -75,7 +91,10 @@ class HomeScreen extends StatelessWidget {
                   Text("Upcoming Flights",style: Styles.headLineStyle2,),
                   InkWell(
                     onTap: () {
-                      print('You are tapped');
+                      Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Flightdetails()),
+            );
                     },
                     child: Text("View all",style: Styles.textStyle.copyWith(color: Styles.primaryColor,))),
                 ],
@@ -100,7 +119,10 @@ class HomeScreen extends StatelessWidget {
                     Text("Hotels",style: Styles.headLineStyle2,),
                     InkWell(
                       onTap: () {
-                        print('You are tapped');
+                       Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Flightdetails()),
+                       );
                       },
                       child: Text("View all",style: Styles.textStyle.copyWith(color: Styles.primaryColor,))),
                   ],

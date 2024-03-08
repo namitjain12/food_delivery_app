@@ -39,6 +39,8 @@ dependencies:
   fluentui_icons: ^1.0.0
   get: ^4.6.4
   gap: ^2.0.0
+  http: ^0.13.3
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
